@@ -1,21 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // your code here
-  const form = document.querySelector('form');
+  let itemCounter = 0
+  document.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let task = document.getElementById('new-task-description');
+    let taskList = document.getElementById('tasks');
+    let newTask = document.createElement('li');
+    let newButton = document.createElement('button');
+    newButton.innerText = "X"
+    newButton.addEventListener('click', () => {
+      newButton.parentNode.remove();
+    })
+    newTask.innerText = task.value;
+    newTask.appendChild(newButton);
+    console.log(newButton.parentNode);
+    taskList.appendChild(newTask);
+  });
 
-  form.addEventListener('submit', function(event){
-    event.preventDefault();
-
-    let inputTag = document.querySelector('input#new-task-description');
-    let inputValue = inputTag.value;
-
-
-    let newLi = document.createElement('li');
-    newLi.innerText = inputValue;
-
-    let ulTag = document.querySelector('ul#tasks');
-    ulTag.append(newLi);
-    inputTag.value = '';
-
-  })
 
 });
